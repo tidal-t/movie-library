@@ -1,0 +1,48 @@
+.cast_detials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+.cast_item {
+  position: relative;
+  border: 1px solid var(--border-secondary-dark);
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.cast_item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+.cast_profile_img {
+  width: 100%;
+  aspect-ratio: 2 /3;
+  height: auto;
+  overflow: hidden;
+}
+.cast_profile_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cast_info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.cast_info .info--name {
+  font-size: 1rem;
+}
+.cast_info .info--known {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}

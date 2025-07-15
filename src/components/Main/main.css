@@ -1,0 +1,37 @@
+main {
+  width: 100%;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  container-type: inline-size;
+  container-name: main;
+}
+@container main (max-width: 1100px) {
+  .nav__item {
+    flex-basis: 20%;
+    opacity: 1;
+  }
+}
+@container main (max-width: 900px) {
+  .nav__item {
+    flex-basis: 25%;
+    opacity: 1;
+  }
+}
+@container main (max-width: 700px) {
+  .nav__item {
+    flex-basis: 33.33333%;
+    opacity: 1;
+  }
+}
+@container main (max-width: 500px) {
+  .nav__item {
+    flex-basis: 50%;
+    opacity: 1;
+  }
+}
+@container main (max-width: 400px) {
+  .nav__item {
+    flex-basis: 100%;
+    opacity: 1;
+  }
+}

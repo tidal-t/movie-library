@@ -1,0 +1,75 @@
+.sidebar {
+  background-color: var(--background-dark);
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 250px;
+  height: 100vh;
+  border-right: 1px solid var(--border-main-dark);
+  gap: 2.5rem;
+  padding: 2rem 1rem;
+}
+.border {
+  width: 100%;
+  border-bottom: 1px solid var(--border-secondary-dark);
+}
+.sidebar_login_btn {
+  border: none;
+  width: 100%;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: var(--item-background-dark);
+  transition: all 0.2s ease;
+}
+.login_btn--icon {
+  background-color: var(--background-dark);
+  padding: 0.7rem;
+  border-radius: 0.3rem;
+}
+.sidebar_nav_item {
+  border: none;
+  width: 100%;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  background-color: var(--background-dark);
+  transition: all 0.2s ease;
+}
+.sidebar_nav_item:hover {
+  background-color: var(--item-background-dark);
+  box-shadow: inset 0px 2px 11px 1px var(--border-secondary-dark);
+}
+
+.sidebar_nav_item.active {
+  border: 1px solid var(--border-secondary-dark);
+  background-color: var(--item-background-dark);
+  box-shadow: inset 0px 2px 11px 1px var(--border-secondary-dark);
+  filter: brightness(1);
+}
+.sidebar_nav_item:not(.active) svg,
+.sidebar_nav_item:not(.active) span {
+  filter: brightness(0.5);
+  transition: all 0.2s ease;
+}
+.sidebar_nav_item:hover span,
+.sidebar_nav_item:hover svg {
+  filter: brightness(1);
+}
+svg {
+  color: var(--svg-dark);
+}
+.sidebar_login_btn {
+}
+.items--list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
