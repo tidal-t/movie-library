@@ -2,7 +2,7 @@ import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
 import { movie_rate, movie_release } from '../../assets/scripts/movieInfo.js';
 import "./drawer.css";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { getGradientFromImage } from '../../assets/scripts/posterGradient.js'
 import Loading from "./components/Loading.jsx";
 import Genre from "./components/Genre.jsx";
 
@@ -25,7 +25,12 @@ export default function Drawer() {
     const [isSub, setSub] = useState(true);
     const descreptionText = useRef();
     const navigate = useNavigate();
-
+    const item_rating = data && movie_rate(data.vote_average);
+    const item_title = data && (type == "tv" ? data.name : data.title);
+    const item_overview = data && data.overview;
+    const subOverview = data && substrText(data.overview, 100);
+    const generes = data && data.genres.map(genre => { return (<Genre name={genre.name} />) })
+    const posterUrl = data && `https://image.tmdb.org/t/p/w500${data.poster_path}`;
 
     function handleClose() {
         setIsClosing(true);
@@ -43,6 +48,9 @@ export default function Drawer() {
         }
     }
     useEffect(() => {
+
+    })
+    useEffect(() => {
         setLoading(true);
         setSub(true);
         fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
@@ -51,12 +59,17 @@ export default function Drawer() {
             .catch(err => console.error(err));
     }, [type, id]);
 
+    useEffect(() => {
+        if (data) {
+            getGradientFromImage(posterUrl).then(res => {
+                console.log(res)
+            })
+        }
 
-    const item_rating = data && movie_rate(data.vote_average);
-    const item_title = data && (type == "tv" ? data.name : data.title);
-    const item_overview = data && data.overview;
-    const subOverview = data && substrText(data.overview, 100);
-    const generes = data && data.genres.map(genre => { return (<Genre name={genre.name} />) })
+    }, [data])
+
+
+
     let first_air_date, last_air_date, release_date;
     if (data) {
         if (type == "tv") {
@@ -139,7 +152,7 @@ export default function Drawer() {
                             </div>
                             <div className="test">
                                 <div className="item_poster">
-                                    <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} loading='lazy' alt="" />
+                                    <img src={posterUrl} loading='lazy' alt="" />
                                 </div>
                                 <div className="item_info">
                                     <div className="info_title">{item_title}</div>
@@ -156,7 +169,7 @@ export default function Drawer() {
 
                         </div>
                         <div className="drawer_info">
-                            <div style={{display : "flex" , justifyContent : "center" , alignItems : "center"}}>
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <div className="item_tablist">
                                     <Link to={`/${type}/${id}`} data-active={location.pathname.endsWith(id)}>overview</Link>
                                     <Link to={`/${type}/${id}/cast`} data-active={location.pathname.includes("cast")}>cast</Link>

@@ -23,13 +23,13 @@ main {
     opacity: 1;
   }
 }
-@container main (max-width: 500px) {
+@container main (max-width: 450px) {
   .nav__item {
     flex-basis: 50%;
     opacity: 1;
   }
 }
-@container main (max-width: 400px) {
+@container main (max-width: 250px) {
   .nav__item {
     flex-basis: 100%;
     opacity: 1;

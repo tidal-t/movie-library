@@ -1,6 +1,6 @@
 .carousel {
   width: 100%;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
 }
 .carousel__header {
   display: flex;
@@ -20,4 +20,8 @@
 
 .nav--wrapper {
   display: flex;
+  /* overflow-x: auto; */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: auto;
 }
