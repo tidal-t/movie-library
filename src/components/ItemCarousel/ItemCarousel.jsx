@@ -2,7 +2,7 @@ import "./carousel.css"
 import Item from '../Item';
 import ItemLoading from "../Loadings/ItemLoading";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const options = {
     method: 'GET',
     headers: {
@@ -13,16 +13,20 @@ const options = {
 export default function ItemCarousel({ title, url }) {
     const [data, setData] = useState();
     const navigate = useNavigate();
+    const location = useLocation();
+    const type = data && (data[0].first_air_date != undefined ? "tv" : "movie");
     const handleClick = (item) => {
-        navigate(`/${item.media_type}/${item.id}`);
+        navigate(`/${type}/${item.id}`, {
+            state: { backgroundLocation: location },
+        });
     };
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/${url}`, options)
             .then(res => res.json())
-            .then(res => { setData(res); console.log(res) })
+            .then(res =>setData(res.results))
             .catch(err => console.error(err));
     }, [])
-    const List = data && data.results.map(item => { return (<Item key={item.id} onClick={() => handleClick(item)} data={item} />) })
+    const List = data && data.map(item => { return (<Item key={item.id} type={item.first_air_date ? "tv" : "movie"} onClick={() => handleClick(item)} data={item}/>) })
     return (
         <div className="carousel">
             <div className="carousel__header">

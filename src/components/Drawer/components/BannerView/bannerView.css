@@ -55,7 +55,7 @@
   bottom: 10%;
   transform: translate(-50%, -10%);
   display: block;
-  min-width: 60%;
+  min-width: 90%;
 }
 .trend_badge {
   display: inline-block;
@@ -69,7 +69,7 @@
   margin-bottom: 0.5rem;
 }
 .banner_title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -102,5 +102,13 @@
   }
   to {
     right: 0%;
+  }
+}
+@media (min-width: 640px) {
+  .banner_title {
+    font-size: 2.5rem;
+  }
+  .banner_info{
+    min-width: 60%;
   }
 }

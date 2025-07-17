@@ -18,8 +18,9 @@ export default function ListView() {
     const navigate = useNavigate();
     const location = useLocation();
     const handleClick = (item) => {
-        const searchParams = location.search;
-        navigate(`/${item.media_type}/${item.id}`);
+        navigate(`/${item.media_type}/${item.id}`, {
+            state: { backgroundLocation: location },
+        });
     };
     const query = searchParams.get('q') || '';
     useEffect(() => {

@@ -1,8 +1,8 @@
 .main__header {
   width: 100%;
   padding: 0.5rem 1rem;
-  background-color: var(--background-dark);
-  border-bottom: 1px solid var(--border-secondary-dark);
+  background-color: var(--section-background);
+  border-bottom: 1px solid var(--border-section);
 }
 .header--group {
   display: flex;
