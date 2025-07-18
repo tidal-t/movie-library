@@ -31,7 +31,7 @@ export default function ItemCarousel({ title, url }) {
         <div className="carousel">
             <div className="carousel__header">
                 <p className="header--title">{title}</p>
-                <button className="btn header--more">Explore More</button>
+                <button className="btn-base header--more">Explore More</button>
             </div>
             <div className="carousel__nav">
                 <div className="nav--wrapper">

@@ -2,8 +2,8 @@
 
 :root {
   --background-dark: #000;
-  --section-background : #0A0A0A;
-  --border-section : #ffffff24;
+  --section-background: #0a0a0a;
+  --border-section: #ffffff24;
   --sidebar-dark: #161616;
   --border-main-dark: #272727;
   --border-secondary-dark: #ffffff21;
@@ -12,6 +12,9 @@
   --muted-text: #8a8a93;
   --svg-dark: #868686;
   --muted-foreground: #a1a1aa;
+  --base-btn-background: var(--section-background);
+  --base-btn-border-hover: #ffffff3d;
+  --base-btn-background-hover: #ffffff17;
 }
 * {
   margin: 0;
@@ -33,10 +36,9 @@ ul {
 .wrapper {
   height: 100vh;
 }
-button:focus {
-  outline: 2px solid white;
+button:focus{
+  outline: none;
 }
-
 main::-webkit-scrollbar,
 .drawer__detail::-webkit-scrollbar {
   width: 8px;
@@ -65,3 +67,4 @@ main::-webkit-scrollbar-thumb:hover,
 .drawer__detail::-webkit-scrollbar-thumb:hover {
   background: #a0a0a5;
 }
+

@@ -1,10 +1,30 @@
-import { useState } from 'react';
+import { debounce } from "lodash";
+import { useState, useEffect } from 'react';
 import './header.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 export default function Header() {
   const [search, setSearch] = useState("")
   const location = useLocation();
   const navigate = useNavigate();
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = debounce(() => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - lastScrollY) > 20) {
+        if (currentScrollY > lastScrollY) {
+          setShow(false);
+        } else {
+          setShow(true);
+        }
+
+        setLastScrollY(currentScrollY);
+      }
+    }, 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   function handleSearchKey(event) {
     if (event.key === "Enter") {
@@ -15,7 +35,7 @@ export default function Header() {
     }
   }
   return (
-    <header className="main__header">
+    <header className={`main__header ${show ? "show" : "hide"}`}>
       <div className="header--group">
         <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "2rem" }}>
           <div>
@@ -43,12 +63,12 @@ export default function Header() {
             <input onKeyDown={(e) => { handleSearchKey(e) }} onChange={(e) => { setSearch(e.target.value) }} value={search} type="text" placeholder="search here..." />
           </div>
           <div className="switch_theme">
-            <button className="header_btn">
+            <button className="btn-base btn-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19.524 14.721h.008c.644 0 1.275-.059 1.886-.172l-.063.01c-1.146 4.122-4.866 7.098-9.281 7.098h-.058h.003c-5.343-.006-9.673-4.336-9.678-9.679v-.001A9.76 9.76 0 0 1 9.37 2.665l.069-.017a10.013 10.013 0 0 0-.162 1.819v.007c.005 5.658 4.59 10.243 10.247 10.248h.001zM12.006.47a1.162 1.162 0 0 0-1.043-.465h.005C4.813.596.034 5.724 0 11.976v.003C.008 18.614 5.385 23.991 12.019 24h.061c6.243 0 11.367-4.786 11.905-10.889l.003-.045a1.168 1.168 0 0 0-.423-1.009l-.002-.002a1.164 1.164 0 0 0-1.084-.213l.008-.002l-.524.156a7.735 7.735 0 0 1-2.435.385h-.007a7.912 7.912 0 0 1-7.903-7.903V4.46c0-1.03.198-2.014.558-2.915l-.019.053a1.169 1.169 0 0 0-.155-1.134l.002.003z" /></svg>
             </button>
           </div>
           <div>
-            <button className='header_btn header_menu'>
+            <button className='btn-base btn-header header_menu'>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu size-4"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
             </button>
           </div>

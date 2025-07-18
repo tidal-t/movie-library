@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './bannerView.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { textSlice } from '../../../../assets/scripts/text';
+import BannerViewLoading from '../../../Loadings/BannerViewLoading'
 
 const options = {
     method: 'GET',
@@ -12,7 +13,7 @@ const options = {
 };
 
 export default function BannerView({ url }) {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export default function BannerView({ url }) {
     }, [url]);
 
     useEffect(() => {
-        if (data.length === 0) return;
+        if (!data || data.length === 0) return;
         const timer = setInterval(() => {
             setIndex(prev => {
                 return (prev + 1) % data.length;
@@ -41,71 +42,73 @@ export default function BannerView({ url }) {
     }, [data]);
 
 
-    if (data.length === 0 || !data[index]) return null;
 
     return (
-        <div className="banner_view">
-            <div className="banner_img">
-                <AnimatePresence mode="wait">
-                    <motion.img
-                        src={`https://image.tmdb.org/t/p/w1280${data[index].backdrop_path}`}
-                        alt=""
-                        key={`current-${data[index].backdrop_path}`}
-                        initial={{ filter: 'blur(20px)', scale: 1.1, opacity: 0 }}
-                        animate={{ filter: 'blur(0px)', scale: 1, opacity: 1 }}
-                        exit={{ filter: 'blur(20px)', opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className='img_background'
-                    />
-                </AnimatePresence>
-                <div className="item__overlay"></div>
-            </div>
-            <div className="banner_overlay">
-                <div className='banner_time_nav'>
-                    {data.map((_, i) => (
-                        <div
-                            key={i}
-                            className={i === index ? 'progress_banner active' : 'progress_banner'}
-                            onClick={() => {
-                                setPrevIndex(index);
-                                setIndex(i);
-                            }}
-                        ></div>
-                    ))}
+        <>
+
+            {data ? (<div className="banner_view">
+                <div className="banner_img">
+                    <AnimatePresence mode="wait">
+                        <motion.img
+                            src={`https://image.tmdb.org/t/p/w1280${data[index].backdrop_path}`}
+                            alt=""
+                            key={`current-${data[index].backdrop_path}`}
+                            initial={{ filter: 'blur(20px)', scale: 1.1, opacity: 0 }}
+                            animate={{ filter: 'blur(0px)', scale: 1, opacity: 1 }}
+                            exit={{ filter: 'blur(20px)', opacity: 0 }}
+                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                            className='img_background'
+                        />
+                    </AnimatePresence>
+                    <div className="item__overlay"></div>
                 </div>
-                <div className="banner_info">
-                    <motion.div
-                        className='trend_badge'
-                        key={`badge-${index}`}
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{
-                            duration: 1.5,
-                            delay: 0.5,
-                            type: 'spring',
-                            stiffness: 200,
-                            damping: 10
-                        }}>
-                        trending now
-                    </motion.div>
-                    <motion.div
-                        className='banner_title'
-                        key={`title-${index}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 , delay: 0.5}}>
-                        {data[index].original_title}
-                    </motion.div>
-                    <motion.div
-                        className='banner_summary'
-                        key={`summary-${index}`}
-                        initial={{ clipPath: 'inset(0% 0% 100% 0%)' }}
-                        animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-                        transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.5}}>
-                        {textSlice(data[index].overview , 135)}
-                    </motion.div>
+                <div className="banner_overlay">
+                    <div className='banner_time_nav'>
+                        {data.map((_, i) => (
+                            <div
+                                key={i}
+                                className={i === index ? 'progress_banner active' : 'progress_banner'}
+                                onClick={() => {
+                                    setPrevIndex(index);
+                                    setIndex(i);
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                    <div className="banner_info">
+                        <motion.div
+                            className='trend_badge'
+                            key={`badge-${index}`}
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{
+                                duration: 1.5,
+                                delay: 0.5,
+                                type: 'spring',
+                                stiffness: 200,
+                                damping: 10
+                            }}>
+                            trending now
+                        </motion.div>
+                        <motion.div
+                            className='banner_title'
+                            key={`title-${index}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}>
+                            {data[index].original_title}
+                        </motion.div>
+                        <motion.div
+                            className='banner_summary'
+                            key={`summary-${index}`}
+                            initial={{ clipPath: 'inset(0% 0% 100% 0%)' }}
+                            animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+                            transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.5 }}>
+                            {textSlice(data[index].overview, 135)}
+                        </motion.div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div>) : <BannerViewLoading />}
+        </>
     );
 }

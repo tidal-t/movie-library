@@ -3,7 +3,6 @@ import { movie_rate, movie_release } from '../../assets/scripts/movieInfo.js';
 import { motion } from "framer-motion";
 import "./drawer.css";
 import { useEffect, useRef, useState } from "react";
-import { getGradientFromImage } from '../../assets/scripts/posterGradient.js'
 import Loading from "./components/Loading.jsx";
 import Genre from "./components/Genre.jsx";
 import ScrollControl from "./components/ScrollControl.jsx";
@@ -43,15 +42,6 @@ export default function Drawer() {
             .then(res => { setData(res); setLoading(false); console.log(res) })
             .catch(err => console.error(err));
     }, [type, id]);
-
-    useEffect(() => {
-        if (data) {
-            getGradientFromImage(posterUrl).then(res => {
-                console.log(res)
-            })
-        }
-
-    }, [data])
 
 
 

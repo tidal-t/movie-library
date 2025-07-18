@@ -1,7 +1,26 @@
-.btn {
+.btn-base {
+  background-color: var(--base-btn-background);
+  border-radius: 6px;
+  border: 1px solid;
+  border-color: var(--border-section);
   padding: 0.7rem;
-  background-color: var(--background-dark);
-  border: 1px solid var(--border-secondary-dark);
-  border-radius: 0.2rem;
+  box-shadow: 0px 0px 0px 0px white;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
+.btn-base:focus-visible {
+  box-shadow: 0px 0px 0px 2px white;
+}
+.btn-base:hover {
+  border-color: var(--base-btn-border-hover);
+  background-color: var(--base-btn-background-hover);
+}
+.btn-header {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
