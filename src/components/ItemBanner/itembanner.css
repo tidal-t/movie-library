@@ -1,0 +1,36 @@
+.item_banner {
+  width: 100%;
+  position: relative;
+}
+.item_banner .banner_img {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border: 1px solid var(--border-section);
+  border-radius: 1rem;
+}
+.banner_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner_logo {
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+.banner_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item_banner_info {
+  min-width: 90%;
+}
+
+/* @media (min-width: 640px) {
+  .item_banner_info {
+    min-width: 60%;
+  }
+} */
