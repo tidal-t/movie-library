@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
+import { Outlet, useNavigate, useParams, Link, useLocation } from "react-router-dom";
 import { movie_rate, movie_release } from '../../assets/scripts/movieInfo.js';
 import { motion } from "framer-motion";
 import "./drawer.css";
@@ -27,6 +27,7 @@ export default function Drawer() {
     const [isSub, setSub] = useState(true);
     const descreptionText = useRef();
     const navigate = useNavigate();
+    const location = useLocation();
     const item_rating = data && movie_rate(data.vote_average);
     const item_title = data && (type == "tv" ? data.name : data.title);
     const item_overview = data && data.overview;
@@ -100,11 +101,11 @@ export default function Drawer() {
                             <div className="drawer_info">
                                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                     <div className="item_tablist">
-                                        <Link to={`/${type}/${id}`} data-active={location.pathname.endsWith(id)}>overview</Link>
-                                        <Link to={`/${type}/${id}/cast`} data-active={location.pathname.includes("cast")}>cast</Link>
-                                        <Link to={`/${type}/${id}/images`} data-active={location.pathname.includes("images")}>images</Link>
-                                        <Link to={`/${type}/${id}/similar`} data-active={location.pathname.includes("similar")}>similar</Link>
-                                        <Link to={`/${type}/${id}/production`} data-active={location.pathname.includes("production")}>production</Link>
+                                        <Link to={`/${type}/${id}`} state={{ backgroundLocation: location }} data-active={location.pathname.endsWith(id)}>overview</Link>
+                                        <Link to={`/${type}/${id}/cast`} state={{ backgroundLocation: location }} data-active={location.pathname.includes("cast")}>cast</Link>
+                                        <Link to={`/${type}/${id}/images`} state={{ backgroundLocation: location }} data-active={location.pathname.includes("images")}>images</Link>
+                                        <Link to={`/${type}/${id}/similar`} state={{ backgroundLocation: location }} data-active={location.pathname.includes("similar")}>similar</Link>
+                                        <Link to={`/${type}/${id}/production`} state={{ backgroundLocation: location }} data-active={location.pathname.includes("production")}>production</Link>
                                     </div>
                                 </div>
                                 <div className="tab_view">

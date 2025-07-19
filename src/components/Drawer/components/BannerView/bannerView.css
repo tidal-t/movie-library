@@ -7,8 +7,8 @@
   height: 600px;
   overflow: hidden;
   position: relative;
-  border: 1px solid var(--border-section);
-  border-radius: 1rem;
+  border: 2px solid var(--border-section);
+  border-radius: 0.3rem;
 }
 .img_background {
   width: 100%;

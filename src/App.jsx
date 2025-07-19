@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <>
-      {/* روت‌های اصلی */}
+      
       <Routes location={backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="search" element={<Search />} />
@@ -29,7 +29,7 @@ export default function App() {
         </Route> */}
       </Routes>
 
-      {/* اگر از صفحه قبلی اومدیم، دراور رو باز کن */}
+      
       {backgroundLocation && (
         <Routes>
           <Route path=":type/:id" element={<Drawer />}>

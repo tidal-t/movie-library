@@ -3,6 +3,7 @@ import { movie_rate, movie_release } from '../../assets/scripts/movieInfo.js';
 import './item.css'
 export default function Item({ data, type = null, padding = true, }) {
     const item_rating = movie_rate(data.vote_average);
+    
     let typeValue;
     if (type) {
         typeValue = type
