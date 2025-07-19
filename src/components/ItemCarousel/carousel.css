@@ -3,10 +3,30 @@
   margin: 1rem 0;
 }
 .carousel__header {
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+}
+/* .header_mobile_v {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+.header_control {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.header_carousel_control {
+  display: flex;
+  gap: 0.5rem;
+}
+.btn-control {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 .header--title {
   font-size: 1.3rem;
@@ -17,11 +37,15 @@
 .carousel__nav {
   overflow: hidden;
 }
-
-.nav--wrapper {
-  display: flex;
-  /* overflow-x: auto; */
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  overscroll-behavior: auto;
+.slick-slide {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+@media (max-width: 640px) {
+  .header_control {
+    justify-content: space-between;
+  }
+  .header_carousel_control {
+    display: none;
+  }
 }
