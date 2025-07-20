@@ -1,4 +1,3 @@
-import Header from "../Header";
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import './listView.css'
 import Item from "../Item";
@@ -10,8 +9,6 @@ const options = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzQxNTg5NDE2YTlkZDRmOTFkNDA5YzgxN2NhYmNmNCIsIm5iZiI6MTc0MTg3MDQ0Ny40NCwic3ViIjoiNjdkMmQ1NmZlZWRiNTNlNTJjMWRlZmIxIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.mAyAn17iuMSMf0n2PfovX9pokHsybhV4IoCiaih2vbo'
     }
 };
-
-
 export default function ListView() {
     const [searchParams] = useSearchParams();
     const [data, setData] = useState();
@@ -37,13 +34,11 @@ export default function ListView() {
 
     return (
         <>
-
             <div className="listView_wrapper">
                 <div className="listView">
                     {list}
                 </div>
             </div>
         </>
-
     )
 }

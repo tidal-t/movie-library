@@ -1,9 +1,9 @@
 import './ListViewer.css'
 
-export default function ListViewer({ list }) {
+export default function ListViewer({ children }) {
     return (
         <div className='list_view'>
-            {list ? list : "loading"}
+            {children ? children : "loading"}
         </div>
     )
 }

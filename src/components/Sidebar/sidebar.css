@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   display: inline-flex;
   flex-direction: column;
   min-width: 250px;
@@ -26,7 +26,7 @@
   transition: all 0.2s ease;
 }
 .login_btn--icon {
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   padding: 0.7rem;
   border-radius: 0.3rem;
 }
@@ -40,7 +40,7 @@
   border-radius: 0.4rem;
   cursor: pointer;
   text-transform: capitalize;
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   transition: all 0.2s ease;
 }
 .sidebar_nav_item:hover {

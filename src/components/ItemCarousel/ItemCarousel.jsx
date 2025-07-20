@@ -19,7 +19,7 @@ export default function ItemCarousel({ title, url }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const settings = {
         infinite: false,
-        speed: 500,
+        speed: 300,
         slidesToShow: 5,
         slidesToScroll: 1,
         swipeToSlide: true,
@@ -46,16 +46,14 @@ export default function ItemCarousel({ title, url }) {
         ]
     };
     useEffect(() => {
-        console.log(currentIndex)
-    }, [currentIndex])
-    useEffect(() => {
         fetch(`https://api.themoviedb.org/3/${url}`, options)
             .then(res => res.json())
             .then(res => setData(res.results))
             .catch(err => console.error(err));
     }, [])
 
-    const List = data && data.map(item => { return (<Item key={item.id} type={item.first_air_date ? "tv" : "movie"} data={item} />) })
+    const List = data && data.map((item, i) => { return (<Item key={item.id} index={i} type={item.first_air_date ? "tv" : "movie"} data={item} />) })
+    const LoadingList = Array(5).fill(0).map((_, i) => { return (<ItemLoading key={i} />) })
     return (
         <div className="carousel">
             <div className="carousel__header">
@@ -74,7 +72,7 @@ export default function ItemCarousel({ title, url }) {
             </div>
             <div className="carousel__nav">
                 <Slider ref={sliderRef} {...settings}>
-                    {List ? List : <ItemLoading />}
+                    {List ? List : LoadingList}
                 </Slider>
             </div>
         </div>

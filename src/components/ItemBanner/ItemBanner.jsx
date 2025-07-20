@@ -33,6 +33,9 @@ export default function ItemBanner({ data }) {
                 </div>
                 <div className="item__overlay banner_overlay">
                     <div className="banner_info item_banner_info">
+                        <div className="trend-badge">
+                            popular tv-show
+                        </div>
                         <div className="banner_item_name">
                             {bestLogo ? (<div className="banner_logo">
                                 <img src={`https://image.tmdb.org/t/p/w500${bestLogo.file_path}`} alt="" />
@@ -40,7 +43,10 @@ export default function ItemBanner({ data }) {
                         </div>
 
                         <div className="banner_summary">{textSlice(data.overview, 135)}</div>
-                        <div></div>
+                        <div className="btn_banner">
+                            <button className="btn btn-primary btn-secondary" style={{marginRight: "1rem"}}>where to watch</button>
+                            <button className="btn btn-primary">details</button>
+                        </div>
                     </div>
                 </div>
             </div>) : <ItemBannerLoading />}

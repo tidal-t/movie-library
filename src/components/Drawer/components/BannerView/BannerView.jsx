@@ -36,7 +36,7 @@ export default function BannerView({ url }) {
             setIndex(prev => {
                 return (prev + 1) % data.length;
             });
-        }, 6000);
+        }, 15000);
 
         return () => clearInterval(timer);
     }, [data]);
@@ -63,7 +63,7 @@ export default function BannerView({ url }) {
                     <div className="item__overlay"></div>
                 </div>
                 <div className="banner_overlay">
-                    <div className='banner_time_nav'>
+                    {/* <div className='banner_time_nav'>
                         {data.map((_, i) => (
                             <div
                                 key={i}
@@ -74,10 +74,10 @@ export default function BannerView({ url }) {
                                 }}
                             ></div>
                         ))}
-                    </div>
+                    </div> */}
                     <div className="banner_info">
                         <motion.div
-                            className='trend_badge'
+                            className='trend-badge'
                             key={`badge-${index}`}
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}

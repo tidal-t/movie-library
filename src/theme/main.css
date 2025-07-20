@@ -1,7 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 
 :root {
-  --background-dark: #000;
+  --background-main: #fafafa;
+  --background-light : #fff;
+  --section-background: #fff;
+  --border-section: #00000014;
+  --sidebar-dark: #161616;
+  --border-main-dark: #272727;
+  --border-secondary-dark: #ffffff21;
+  --item-background-dark: #27272a;
+  --text-dark: #fff;
+  --muted-text: #8a8a93;
+  --svg-dark: #868686;
+  --muted-foreground: #a1a1aa;
+  --base-btn-background: var(--section-background);
+  --base-btn-border-hover: #ffffff3d;
+  --base-btn-background-hover: #ffffff17;
+  --text : #fff;
+  --text-black : #000;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-dark);
+  font-family: "Geist", Arial;
+}
+body.dark {
+  --background-main: #000;
   --section-background: #0a0a0a;
   --border-section: #ffffff24;
   --sidebar-dark: #161616;
@@ -16,15 +43,8 @@
   --base-btn-border-hover: #ffffff3d;
   --base-btn-background-hover: #ffffff17;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: var(--text-dark);
-  font-family: "Geist", Arial;
-}
 body {
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   min-height: 100vh;
   color-scheme: dark;
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2327272a' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
@@ -36,7 +56,7 @@ ul {
 .wrapper {
   height: 100vh;
 }
-button:focus{
+button:focus {
   outline: none;
 }
 main::-webkit-scrollbar,
@@ -68,3 +88,7 @@ main::-webkit-scrollbar-thumb:hover,
   background: #a0a0a5;
 }
 
+.content_wrapper{
+  padding: 2rem 1rem;
+  margin-top: 3.5rem;
+}

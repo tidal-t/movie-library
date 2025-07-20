@@ -1,6 +1,6 @@
 .carousel {
   width: 100%;
-  margin: 1rem 0;
+  margin-top: 2.5rem;
 }
 .carousel__header {
   margin-bottom: 1rem;
@@ -25,11 +25,12 @@
   gap: 0.5rem;
 }
 .btn-control {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 35px;
+  height: 35px;
 }
 .header--title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
   text-transform: capitalize;
 }
 .header--more {
@@ -38,8 +39,11 @@
   overflow: hidden;
 }
 .slick-slide {
-  padding: 0 10px;
+  padding: 0 8px;
   box-sizing: border-box;
+}
+.slick-list {
+  margin: 0 -6px;
 }
 @media (max-width: 640px) {
   .header_control {

@@ -1,9 +1,16 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { movie_rate, movie_release } from '../../assets/scripts/movieInfo.js';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import './item.css'
-export default function Item({ data, type = null, padding = true, }) {
+export default function Item({ data, type = null, padding = true }) {
     const item_rating = movie_rate(data.vote_average);
-    
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
+
+
     let typeValue;
     if (type) {
         typeValue = type
@@ -13,8 +20,7 @@ export default function Item({ data, type = null, padding = true, }) {
     const item_title = typeValue == "tv" ? data.name : data.title;
     const item_release_year = typeValue == "tv" ? movie_release(data.first_air_date) : movie_release(data.release_date);
 
-    const navigate = useNavigate();
-    const location = useLocation();
+
 
     const handleClick = () => {
         navigate(`/${typeValue}/${data.id}`, {

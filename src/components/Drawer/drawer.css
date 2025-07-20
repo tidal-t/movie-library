@@ -9,7 +9,7 @@
   position: absolute;
   bottom: 0;
   height: 92vh;
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2327272a' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   border-top: 1px solid var(--border-secondary-dark);
   overflow-y: auto;
@@ -149,7 +149,7 @@
 .detail--shadow {
   position: absolute;
   inset: 0;
-  box-shadow: inset 0px -44px 14px -11px var(--background-dark);
+  box-shadow: inset 0px -44px 14px -11px var(--background-main);
 }
 .drawer_close_btn {
   position: absolute;
@@ -163,7 +163,7 @@
   gap: 1rem;
 }
 .scroll_detial {
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   position: relative;
 }
 .scroll_detial::after {
@@ -171,7 +171,7 @@
   width: 100%;
   height: 2rem;
   border-radius: 1.5rem 1.5rem 0 0;
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
   position: absolute;
   top: 0;
   transform: translateY(-100%);
@@ -272,7 +272,7 @@
   font-size: 0.9rem;
 }
 .item_tablist a[data-active="true"] {
-  background-color: var(--background-dark);
+  background-color: var(--background-main);
 }
 .overview_details {
   width: 100%;
